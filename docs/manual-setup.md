@@ -34,6 +34,7 @@ As shown in the reference architecture, you will be creating a custom mode VPC w
 ```bash
 VPC_NAME=vpc-producer
 GCP_REGION=europe-west1
+GCP_PROJECT_ID=YOURPROJECTIDHERE
 gcloud compute networks create $VPC_NAME --subnet-mode=custom
 gcloud compute networks subnets create "${VPC_NAME}-subnet-$GCP_REGION" --network=$VPC_NAME --region=$GCP_REGION --range=10.0.1.0/24
 ```
@@ -106,7 +107,7 @@ Now, build and push the docker image using Cloud Build:
 ```bash
 NETTEST_IMAGE_NAME=network-tester
 gcloud builds submit https://github.com/willypalacin/vpc-network-tester \
-  -t "$GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$REPO_NAME/$NETTEST_IMAGE_NAME" \
+  -t "$GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$AR_REPO_NAME/$NETTEST_IMAGE_NAME" \
   --git-source-dir=cloudrun \
   --git-source-revision=main
 ```
