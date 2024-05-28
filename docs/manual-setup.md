@@ -34,7 +34,6 @@ As shown in the reference architecture, you will be creating a custom mode VPC w
 ```bash
 VPC_NAME=vpc-producer
 GCP_REGION=europe-west1
-GCP_PROJECT_ID=YOURPROJECTIDHERE
 gcloud compute networks create $VPC_NAME --subnet-mode=custom
 gcloud compute networks subnets create "${VPC_NAME}-subnet-$GCP_REGION" --network=$VPC_NAME --region=$GCP_REGION --range=10.0.1.0/24
 ```
